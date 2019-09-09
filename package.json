@@ -1,0 +1,26 @@
+{
+  "name": "aragon-permission-graph",
+  "version": "0.0.1",
+  "description": "Create a graphical representation of aragon DAO permission definitions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tintinweb/aragon-permissions-graph.git"
+  },
+  "keywords": [
+    "aragon",
+    "permissions"
+  ],
+  "author": "tintinweb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tintinweb/aragon-permissions-graph/issues"
+  },
+  "homepage": "https://github.com/tintinweb/aragon-permissions-graph#readme",
+  "dependencies": {
+    "yaml": "^1.6.0"
+  }
+}
