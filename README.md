@@ -20,6 +20,8 @@ console.log(araPerm.uml())
 
 ### from markdown table
 
+Example: https://github.com/aragon/dao-templates/blob/master/templates/company/README.md
+
 ![image](https://user-images.githubusercontent.com/2865694/64526657-2a07e080-d304-11e9-82fa-0f81e7834326.png)
 
 
