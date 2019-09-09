@@ -2,7 +2,15 @@
 
 Generate permission relationship graphs from aragon template description files (`yaml`) or permissions specified with Markdown Tables.
 
-### from yaml
+### from DAO description files (yaml)
+
+https://github.com/aragon/dao-templates/tree/master/descriptor
+
+Example: https://github.com/aragon/dao-templates/blob/cc1eb1174a13c6d5ed0fcc1bbcc9d21bf9137a84/descriptor/examples/company.yaml
+
+![image](https://user-images.githubusercontent.com/2865694/64525950-5a4e7f80-d302-11e9-875e-162affd6379c.png)
+
+
 ```
 
 const araPerm = new AragonPermissions({'filename':'./examples/company.yaml'})
@@ -11,6 +19,10 @@ console.log(araPerm.uml())
 ```
 
 ### from markdown table
+
+![image](https://user-images.githubusercontent.com/2865694/64525883-2bd0a480-d302-11e9-9054-07f92cf5fda6.png)
+
+
 ```
 const input = `
 dfdf
