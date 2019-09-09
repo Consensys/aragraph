@@ -268,6 +268,17 @@ dfdf
 | Finance           | MANAGE_PAYMENTS       | Voting        | Voting  |
 | Token Manager     | MINT                  | Voting        | Voting  |
 | Token Manager     | BURN                  | Voting        | Voting  |
+| Agent             | RUN_SCRIPT            | Voting        | Voting  |
+| Agent             | EXECUTE               | Voting        | Voting  |
+| Finance             | CREATE_PAYMENTS            | Payroll             | Voting        |
+| Payroll             | ADD_BONUS_ROLE             | EOA or Voting       | Voting        |
+| Payroll             | ADD_EMPLOYEE_ROLE          | EOA or Voting       | Voting        |
+| Payroll             | ADD_REIMBURSEMENT_ROLE     | EOA or Voting       | Voting        |
+| Payroll             | TERMINATE_EMPLOYEE_ROLE    | EOA or Voting       | Voting        |
+| Payroll             | SET_EMPLOYEE_SALARY_ROLE   | EOA or voting       | Voting        |
+| Payroll             | MODIFY_PRICE_FEED_ROLE     | Voting              | Voting        |
+| Payroll             | MODIFY_RATE_EXPIRY_ROLE    | Voting              | Voting        |
+| Payroll             | MANAGE_ALLOWED_TOKENS_ROLE | Voting              | Voting        |
 `;
 
 
