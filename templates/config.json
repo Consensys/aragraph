@@ -1,0 +1,8 @@
+{
+    "plantuml" : {
+        "header": ["allowmixing", "skinparam handwritten true"],
+        "applicationTemplates": {
+            "agent": ""
+        }
+    }
+}

@@ -1,6 +1,25 @@
-# aragon-dao-templates-graph
+# aragraph
 
 Generate permission relationship graphs from aragon template description files (`yaml`) or permissions specified with Markdown Tables.
+
+
+**install** 
+
+`$ npm install -g aragraph`
+
+**generate from yaml description**
+
+`$ aragraph ./examples/company.yaml > dao.plantuml `
+
+**generate from markdown**
+
+`$ aragraph ./examples/aragon_company_README.md > dao.plantuml `
+
+**Render**
+
+`$ java -jar plantuml.jar dao.plantuml`
+
+## Library
 
 ### from DAO description files (yaml)
 
@@ -12,9 +31,9 @@ Example: https://github.com/aragon/dao-templates/blob/cc1eb1174a13c6d5ed0fcc1bbc
 
 
 ```
+const AragonPermissions = require("./AragonPermissions.js");
 
-const araPerm = new AragonPermissions({'filename':'./examples/company.yaml'})
-console.log(araPerm.uml())
+console.log(new AragonPermissions().fromYaml('./examples/company.yaml').uml())
 
 ```
 
@@ -26,8 +45,9 @@ Example: https://github.com/aragon/dao-templates/blob/master/templates/company/R
 
 
 ```
+const AragonPermissions = require("./AragonPermissions.js");
+
 const input = `
-dfdf
 
 | App               | Permission            | Grantee       | Manager |
 |-------------------|-----------------------|---------------|---------|
@@ -59,8 +79,6 @@ dfdf
 
 
 
-
-const araPerm2 = new AragonPermissions({'markdown':input})
-console.log(araPerm2.uml())
+console.log(new AragonPermissions().fromMarkdownTable(md).uml())
 
 ```

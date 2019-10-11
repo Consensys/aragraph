@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/tintinweb/aragon-permissions-graph#readme",
   "dependencies": {
-    "yaml": "^1.6.0"
+    "yaml": "^1.6.0",
+    "yargs": "^14.2.0"
   }
 }
