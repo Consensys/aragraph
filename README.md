@@ -6,8 +6,9 @@
 
 # aragraph
 
-Generate permission relationship graphs from aragon template description files (`yaml`) or permissions specified with Markdown Tables.
+Generate permission relationship graphs from aragon template description files (`yaml`) or Markdown Tables specifications.
 
+This script generates UML descriptions for aragon templates that can be rendered with [Plantuml](http://plantuml.com/).
 
 **install** 
 
