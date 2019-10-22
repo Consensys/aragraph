@@ -26,10 +26,6 @@ This script generates UML descriptions for aragon templates that can be rendered
 
 `$ java -jar plantuml.jar dao.plantuml`
 
-## Config
-
-TBD
-
 ## Library
 
 ### from DAO description files (yaml)
