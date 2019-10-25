@@ -9,7 +9,7 @@ const fs = require('fs');
 const {AragonPermissions} = require("./aragraph.js");
 
 const argv = require('yargs') // eslint-disable-line
-    .usage('Usage: $0 <command> [options]')
+    .usage('Usage: $0 [options] <dao.yaml|Readme.md>')
     .nargs([], 1)
     .demandCommand(1)
     .alias('c', 'config')

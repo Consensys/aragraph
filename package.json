@@ -1,25 +1,29 @@
 {
-  "name": "aragon-permission-graph",
-  "version": "0.0.1",
-  "description": "Create a graphical representation of aragon DAO permission definitions",
+  "name": "aragraph",
+  "version": "0.0.2",
+  "description": "Visualize your Aragon DAO Templates",
   "main": "index.js",
+  "bin": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tintinweb/aragon-permissions-graph.git"
+    "url": "git+https://github.com/ConsenSys/aragraph.git"
   },
   "keywords": [
     "aragon",
-    "permissions"
+    "dao",
+    "ethereum",
+    "permissions",
+    "security"
   ],
   "author": "tintinweb",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tintinweb/aragon-permissions-graph/issues"
+    "url": "https://github.com/ConsenSys/aragraph/issues"
   },
-  "homepage": "https://github.com/tintinweb/aragon-permissions-graph#readme",
+  "homepage": "https://github.com/ConsenSys/aragraph#readme",
   "dependencies": {
     "yaml": "^1.6.0",
     "yargs": "^14.2.0"

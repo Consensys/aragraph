@@ -6,7 +6,7 @@ tokens:
   name: Share Token
   decimals: 18
 apps:
-- ref: shareholder-voting
+- ref: share-voting
   type: voting
   token: share
   support: 50
