@@ -3,6 +3,8 @@
 [[  🌐  ](https://diligence.consensys.net)  [  📩  ](mailto:diligence@consensys.net)  [  🔥  ](https://consensys.github.io/diligence/)]
 </sup><br/><br/>
 
+![aragraph](https://user-images.githubusercontent.com/2865694/67569431-25ba4a00-f72f-11e9-9573-82d3af805a54.png)
+
 
 # aragraph
 
