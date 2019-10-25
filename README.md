@@ -83,11 +83,10 @@ const input = `
 | Payroll             | SET_EMPLOYEE_SALARY_ROLE   | EOA or voting       | Voting        |
 | Payroll             | MODIFY_PRICE_FEED_ROLE     | Voting              | Voting        |
 | Payroll             | MODIFY_RATE_EXPIRY_ROLE    | Voting              | Voting        |
-| Payroll             | MANAGE_ALLOWED_TOKENS_ROLE | Voting              | Voting        |
-`;
+| Payroll             | MANAGE_ALLOWED_TOKENS_ROLE | Voting              | Voting        |`;
 
 
 
-console.log(new AragonPermissions().fromMarkdownTable(md).uml())
+console.log(new AragonPermissions().fromMarkdownTable(input).uml())
 
 ```
