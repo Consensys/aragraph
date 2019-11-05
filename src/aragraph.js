@@ -14,7 +14,7 @@ const ARAAPPS = {
 }
 
 function graphNormalizeEntity(e){
-    return e.replace(/[-\s\`\[\]]+/g, '_').trim("_");
+    return e.trim().replace(/[-\s\`\[\]]+/g, '_').replace(/(^_)|(_$)/g, "");
 }
 
 function nullify(n){
