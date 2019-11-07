@@ -3,14 +3,15 @@
 [[  🌐  ](https://diligence.consensys.net)  [  📩  ](mailto:diligence@consensys.net)  [  🔥  ](https://consensys.github.io/diligence/)]
 </sup><br/><br/>
 
+![aragraph-logo](https://user-images.githubusercontent.com/2865694/68420282-4dcc9300-019c-11ea-9ff1-849d91fb0bad.png)
+
+# AraGraph
+
+[This blog post](https://diligence.consensys.net/blog/2019/11/aragraph-dao-permissions-visualized/) is a good introduction to AraGraph.
+
+This tool generate permission relationship graphs from aragon template description files (`yaml`) or specifications in Markdown table format. Use [Plantuml](http://plantuml.com/) to render the generated the DAOs UML description.
+
 ![aragraph](https://user-images.githubusercontent.com/2865694/67569431-25ba4a00-f72f-11e9-9573-82d3af805a54.png)
-
-
-# aragraph
-
-Generate permission relationship graphs from aragon template description files (`yaml`) or Markdown Tables specifications.
-
-This script generates UML descriptions for aragon templates that can be rendered with [Plantuml](http://plantuml.com/).
 
 **install** 
 
