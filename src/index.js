@@ -9,8 +9,13 @@ const fs = require('fs');
 const {AragonPermissions} = require("./aragraph.js");
 
 const argv = require('yargs') // eslint-disable-line
-    .usage('Usage: $0 [options] <dao.yaml|Readme.md>')
+    .usage('Usage: $0 [options] <dao.yaml|Readme.md|0x1234...>')
     .nargs([], 1)
+    .option('i', {
+        alias: 'chain-id',
+        default: 1,
+        type: 'number',
+    })
     .demandCommand(1)
     .alias('c', 'config')
     .describe('c', 'path to configuration file')
@@ -31,5 +36,10 @@ argv._.forEach(inp => {
         console.log(new AragonPermissions().fromYaml(inp).uml());
     } else if(inp.endsWith(".md")){
         console.log(new AragonPermissions().fromMarkdownTable(inp).uml())
+    } else if(inp.startsWith('0x')){
+        new AragonPermissions().fromDAO(inp, argv.chainId).then((aragaph) => {
+            console.log(aragaph.uml())
+            process.exit(0)
+        })
     }
 })
