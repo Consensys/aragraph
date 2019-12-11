@@ -49,6 +49,8 @@ or open with [vscode-PlantUML](https://marketplace.visualstudio.com/items?itemNa
 
 ### for a live DAO on mainnet
 
+![image](https://user-images.githubusercontent.com/2865694/70667693-cded8900-1c71-11ea-8ae6-7cafe6311244.png)
+
 ```js
 new AragonPermissions().fromDAO(address, chainId).then((aragaph) => {
         console.log(aragaph.uml())
