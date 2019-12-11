@@ -9,13 +9,27 @@
 
 [This blog post](https://diligence.consensys.net/blog/2019/11/aragraph-dao-permissions-visualized/) is a good introduction to AraGraph.
 
-This tool generate permission relationship graphs from aragon template description files (`yaml`) or specifications in Markdown table format. Use [Plantuml](http://plantuml.com/) to render the generated the DAOs UML description.
+AraGraph is a tool to generate nice looking permission graphs for Aragon DAOs. It can take the following inputs:
+
+- The address and chain-ID of a live DAO.
+- A DAO template description file (`yaml`).
+- A specification in Markdown table format.
+
+The tool generates an UML description for the DAO. Use [Plantuml](http://plantuml.com/) to render it.
 
 ![aragraph](https://user-images.githubusercontent.com/2865694/67569431-25ba4a00-f72f-11e9-9573-82d3af805a54.png)
 
 **install** 
 
 `$ npm install -g aragraph`
+
+## CLI
+
+**generate for a live DAO on mainnet**
+
+[Example: DAO-Kernel on mainnet](https://etherscan.io/address/0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C#code)
+
+`$ aragraph 0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C --chain-id 1 > dao.plantuml `
 
 **generate from yaml description**
 
@@ -29,34 +43,42 @@ This tool generate permission relationship graphs from aragon template descripti
 
 `$ java -jar plantuml.jar dao.plantuml`
 
+or open with [vscode-PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
+
 ## Library
+
+### for a live DAO on mainnet
+
+```js
+new AragonPermissions().fromDAO(address, chainId).then((aragaph) => {
+        console.log(aragaph.uml())
+        process.exit(0)
+})
+```
 
 ### from DAO description files (yaml)
 
-https://github.com/aragon/dao-templates/tree/master/descriptor
+[Specification: DAO-Templates/Descriptor](https://github.com/aragon/dao-templates/tree/master/descriptor)
 
-Example: https://github.com/aragon/dao-templates/blob/cc1eb1174a13c6d5ed0fcc1bbcc9d21bf9137a84/descriptor/examples/company.yaml
+[Example: Company.yaml](https://github.com/aragon/dao-templates/blob/cc1eb1174a13c6d5ed0fcc1bbcc9d21bf9137a84/descriptor/examples/company.yaml)
 
 ![image](https://user-images.githubusercontent.com/2865694/64525950-5a4e7f80-d302-11e9-875e-162affd6379c.png)
 
 
-```
+```js
 const AragonPermissions = require("./AragonPermissions.js");
-
 console.log(new AragonPermissions().fromYaml('./examples/company.yaml').uml())
-
 ```
 
 ### from markdown table
 
-Example: https://github.com/aragon/dao-templates/blob/master/templates/company/README.md
+[Example: Readme.md](https://github.com/aragon/dao-templates/blob/master/templates/company/README.md)
 
 ![image](https://user-images.githubusercontent.com/2865694/64526657-2a07e080-d304-11e9-82fa-0f81e7834326.png)
 
 
-```
+```js
 const AragonPermissions = require("./AragonPermissions.js");
-
 const input = `
 
 | App               | Permission            | Grantee       | Manager |
@@ -84,10 +106,12 @@ const input = `
 | Payroll             | SET_EMPLOYEE_SALARY_ROLE   | EOA or voting       | Voting        |
 | Payroll             | MODIFY_PRICE_FEED_ROLE     | Voting              | Voting        |
 | Payroll             | MODIFY_RATE_EXPIRY_ROLE    | Voting              | Voting        |
-| Payroll             | MANAGE_ALLOWED_TOKENS_ROLE | Voting              | Voting        |`;
-
-
+| Payroll             | MANAGE_ALLOWED_TOKENS_ROLE | Voting              | Voting        |
+`;
 
 console.log(new AragonPermissions().fromMarkdownTable(input).uml())
-
 ```
+
+# Contributors 🤗
+
+* [Kirill Goncharov](https://github.com/xuhcc) - [#1 (generate from mainnet)](https://github.com/ConsenSys/aragraph/pull/1)
