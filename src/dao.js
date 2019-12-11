@@ -103,8 +103,6 @@ class RemoteDao {
             for (const [roleHash, data] of Object.entries(roles)) {
                 const roleId = allRoles[roleHash] || 'Unknown'
                 data.allowedEntities.forEach((entity) => {
-                    console.error(getAppName(app))
-                    console.info(app)
                     output.push({
                         app: getAppName(app),
                         role: roleId,
