@@ -8,6 +8,7 @@
 /** imports */
 const YAML = require('yaml');
 const fs = require('fs');
+const dao = require('./dao')
 
 const ARAAPPS = {
     xvoting: "",
@@ -190,6 +191,12 @@ class AragonPermissions {
             contents = fs.readFileSync(contents, 'utf8');
         }
         this.data = YAML.parse(contents)
+        return this;
+    }
+
+    async fromDAO(daoAddress, chainId) {
+        const permissions = await dao.getPermissions(daoAddress, chainId)
+        this.data = {permissions: permissions, tokens: [], apps: [], actions: []}
         return this;
     }
 
