@@ -12,6 +12,7 @@ const dao = require('./dao')
 
 const ARAAPPS = {
     xvoting: "",
+    __actor__: "actor %%ref%%"
 }
 
 function graphNormalizeEntity(e){
@@ -65,7 +66,7 @@ class AraApp {
         if(!this.template){
             this.template = `
 class %%ref%% {
-    {abstract}${this.type}
+    {abstract}${graphNormalizeEntity(this.type)}
 
     %%note%%
 }
@@ -152,16 +153,11 @@ class AraGraph {
                 uml.push(`${graphNormalizeEntity(a.ref)} <|-- ${graphNormalizeEntity(a.options.token)}`)
             }
         }
-
         
-
-        
-
         uml.push(`' -- permissions --`);
         for(let p of Object.values(this.permissionTuples)){
             uml.push(p.toString())
         }
-
         
         uml.push("\n@enduml")
         return uml.join('\n');
@@ -195,8 +191,14 @@ class AragonPermissions {
     }
 
     async fromDAO(daoAddress, chainId) {
-        const permissions = await dao.getPermissions(daoAddress, chainId)
-        this.data = {permissions: permissions, tokens: [], apps: [], actions: []}
+        const remoteDao = new dao.RemoteDao(daoAddress, chainId)
+
+        await remoteDao.load()
+
+        const permissions = remoteDao.getPermissions()
+        const apps = remoteDao.getApps()
+
+        this.data = {permissions: permissions, tokens: [], apps: apps, actions: []}
         return this;
     }
 
