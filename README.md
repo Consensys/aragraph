@@ -27,8 +27,6 @@ The tool generates an UML description for the DAO. Use [Plantuml](http://plantum
 
 **generate for a live DAO on mainnet**
 
-[Example: DAO-Kernel on mainnet](https://etherscan.io/address/0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C#code)
-
 `$ aragraph 0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C --chain-id 1 > dao.plantuml `
 
 **generate from yaml description**
@@ -49,7 +47,9 @@ or open with [vscode-PlantUML](https://marketplace.visualstudio.com/items?itemNa
 
 ### for a live DAO on mainnet
 
-![image](https://user-images.githubusercontent.com/2865694/70667693-cded8900-1c71-11ea-8ae6-7cafe6311244.png)
+[Example: DAO-Kernel on mainnet](https://etherscan.io/address/0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C#code)
+
+![fromDAO](https://user-images.githubusercontent.com/2865694/70704084-9b737880-1cd1-11ea-8288-e01a356d756f.png)
 
 ```js
 new AragonPermissions().fromDAO(address, chainId).then((aragaph) => {
@@ -64,7 +64,7 @@ new AragonPermissions().fromDAO(address, chainId).then((aragaph) => {
 
 [Example: Company.yaml](https://github.com/aragon/dao-templates/blob/cc1eb1174a13c6d5ed0fcc1bbcc9d21bf9137a84/descriptor/examples/company.yaml)
 
-![image](https://user-images.githubusercontent.com/2865694/64525950-5a4e7f80-d302-11e9-875e-162affd6379c.png)
+![fromYaml](https://user-images.githubusercontent.com/2865694/70704101-a3331d00-1cd1-11ea-98a5-908818107cbb.png)
 
 
 ```js
