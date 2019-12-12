@@ -43,6 +43,18 @@ The tool generates an UML description for the DAO. Use [Plantuml](http://plantum
 
 or open with [vscode-PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 
+### Config / Templating
+
+AraGraph allows you to template certain apps to enrich them with even more context like available Roles, Methods, static security information. See [templates/config.json](https://github.com/ConsenSys/aragraph/blob/master/templates/config.json) for details.
+
+You can either provide you own `config.json`:
+
+`$ aragraph 0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C --config config.json `
+
+Or use the [config.json](https://github.com/ConsenSys/aragraph/blob/master/templates/config.json) provided with this package:
+
+`$ aragraph 0x2dE83b50Af29678774D5AbC4a7Cb2a588762f28C --default-config `
+
 ## Library
 
 ### for a live DAO on mainnet
