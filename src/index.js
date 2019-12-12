@@ -16,6 +16,11 @@ const argv = require('yargs') // eslint-disable-line
         default: 1,
         type: 'number',
     })
+    .option('t', {
+        alias: 'default-config',
+        default: false,
+        type: 'boolean',
+    })
     .demandCommand(1)
     .alias('c', 'config')
     .describe('c', 'path to configuration file')
@@ -29,15 +34,17 @@ let config = null;
 
 if(argv.config && argv.config.endsWith('.json')){
     config = JSON.parse(fs.readFileSync(argv.config));
+} else if (argv.defaultConfig) {
+    config = JSON.parse(fs.readFileSync(`${__dirname}/../templates/config.json`));
 }
 
 argv._.forEach(inp => {
     if(inp.endsWith(".yaml")){
-        console.log(new AragonPermissions().fromYaml(inp).uml());
+        console.log(new AragonPermissions(config).fromYaml(inp).uml());
     } else if(inp.endsWith(".md")){
-        console.log(new AragonPermissions().fromMarkdownTable(inp).uml())
+        console.log(new AragonPermissions(config).fromMarkdownTable(inp).uml())
     } else if(inp.startsWith('0x')){
-        new AragonPermissions().fromDAO(inp, argv.chainId).then((aragaph) => {
+        new AragonPermissions(config).fromDAO(inp, argv.chainId).then((aragaph) => {
             console.log(aragaph.uml())
             process.exit(0)
         })
