@@ -55,7 +55,7 @@ class RemoteDao {
 
     getApps(){
         let apps = this.apps.map((app) => { 
-            return {ref: `${app.name} ${app.proxyAddress.toLowerCase().substring(0, 6)}`, type: app.name }
+            return {ref: `${app.name} ${app.proxyAddress.toLowerCase().substring(0, 6)}`, type: app.name}
         })
         let appNamesRefs = apps.map(app => app.ref)
 

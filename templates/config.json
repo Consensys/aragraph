@@ -2,7 +2,19 @@
     "plantuml" : {
         "header": ["allowmixing", "skinparam handwritten true"],
         "applicationTemplates": {
-            "agent": ""
+            "_actor_": "actor %%ref%%",
+            "__default__": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    %%note%%\n}",
+            "acl": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    +{static}CREATE_PERMISSIONS\n    ----\n    %%note%%\n}",
+            "kernel": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    +{static}APP_MANAGER\n    ----\n    %%note%%\n}",
+            "evm_script_registry": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    +{static}REGISTRY_ADD_EXECUTOR\n    +{static}REGISTRY_MANAGER\n    ----\n    %%note%%\n}",
+            "agent": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n  +{static}EXECUTE\n    +{static}SAFE_EXECUTE_ROLE\n    +{static}ADD_PROTECTED_TOKEN_ROLE\n    +{static}REMOVE_PROTECTED_TOKEN_ROLE\n    +{static}RUN_SCRIPT\n    +{static}ADD_PRESIGNED_HASH\n    +{static}DESIGNATE_SIGNER\n    ----\n    %%note%%\n}",
+            "finance": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    +{static}CREATE_PAYMENTS\n    +{static}CHANGE_PERIOD\n    +{static}CHANGE_BUDGETS\n    +{static}EXECUTE_PAYMENTS\n    +{static}MANAGE_PAYMENTS\n    ----\n    %%note%%\n}",
+            "voting": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    +{static}CREATE_VOTES\n    +{static}MODIFY_SUPPORT\n    +{static}MODIFY_QUORUM\n    ----\n    %%note%%\n}",
+            "token_manager": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    +{static}MINT\n    +{static}ISSUE\n    +{static}ASSIGN\n    +{static}REVOKE_VESTINGS\n    +{static}BURN\n    ----\n    %%note%%\n}",
+            "vault": "class %%ref%% {\n    {abstract}%%type%%\n    ----\n+{static}TRANSFER\n    ----\n    %%note%%\n}"
         }
     }
 }
+
+
+

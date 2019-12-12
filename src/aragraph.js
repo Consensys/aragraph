@@ -10,11 +10,6 @@ const YAML = require('yaml');
 const fs = require('fs');
 const dao = require('./dao')
 
-const ARAAPPS = {
-    xvoting: "",
-    __actor__: "actor %%ref%%"
-}
-
 function graphNormalizeEntity(e){
     return e.trim().replace(/[-\s\`\[\]]+/g, '_').replace(/(^_)|(_$)/g, "");
 }
@@ -60,22 +55,23 @@ class AraApp {
         delete options.ref
         delete options.type
 
-
         this.options = options;
-        this.template = ARAAPPS[this.type];
-        if(!this.template){
-            this.template = `
+
+        this.template = `
 class %%ref%% {
-    {abstract}${graphNormalizeEntity(this.type)}
+    {abstract}%%type%%
 
     %%note%%
 }
-`;
-        }
+        `;
+    }
+    setTemplate(t){
+        this.template = t;
     }
     toString(){
         return this.template
             .replace("%%ref%%", graphNormalizeEntity(this.ref))
+            .replace("%%type%%", graphNormalizeEntity(this.type))
             .replace("%%note%%", Object.entries(this.options).map(([k,v]) => `\t**${k}** ${v}`).join('\n'));
     }
 }
@@ -106,10 +102,12 @@ package %%ref%% {
 }
 
 class AraGraph {
-    constructor(){
+    constructor(config){
         this.apps = {};
         this.tokens = {};
         this.permissionTuples = {};
+
+        this.config = config;
     }
 
     addPermission(p){
@@ -128,6 +126,9 @@ class AraGraph {
     addApp(a){
         let app = new AraApp(a.ref, a.type, a);
         this.apps[app.ref] = app; 
+        let template = this.config.plantuml.applicationTemplates[app.type ? graphNormalizeEntity(app.type.toLowerCase()) : "__default__"];
+        if(template)
+            app.setTemplate(template)
     }
 
     addToken(t){
@@ -253,7 +254,7 @@ class AragonPermissions {
 
     uml(){
 
-        let g = new AraGraph();
+        let g = new AraGraph(this.config);
 
         for(let a of this.data.apps){
             g.addApp(a)
