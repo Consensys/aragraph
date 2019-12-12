@@ -175,7 +175,10 @@ class AragonPermissions {
         let config_default = {
             plantuml : {
                 header: ["allowmixing", "skinparam handwritten true"],
-                applicationTemplates: {}
+                applicationTemplates: {
+                    _actor_: "actor %%ref%%",
+                    __default__: "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    %%note%%\n}"
+                }
             }
         }
         

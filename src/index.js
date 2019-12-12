@@ -17,7 +17,7 @@ const argv = require('yargs') // eslint-disable-line
         type: 'number',
     })
     .option('t', {
-        alias: 'default-templates',
+        alias: 'default-config',
         default: false,
         type: 'boolean',
     })
@@ -34,7 +34,7 @@ let config = null;
 
 if(argv.config && argv.config.endsWith('.json')){
     config = JSON.parse(fs.readFileSync(argv.config));
-} else if (argv.defaultTemplates) {
+} else if (argv.defaultConfig) {
     config = JSON.parse(fs.readFileSync(`${__dirname}/../templates/config.json`));
 }
 
