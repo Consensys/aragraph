@@ -13,7 +13,7 @@ const ETH_PROVIDERS = {
     4: 'wss://rinkeby.eth.aragon.network/ws',
 }
 const ENS_REGISTRIES = {
-    1: '0x314159265dd8dbb310642f98f50c066173c1259b',
+    1: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
     4: '0x98df287b6c145399aaa709692c8d308357bc085d',
 }
 const IPFS_GATEWAY_URL = 'https://ipfs.eth.aragon.network/ipfs'
