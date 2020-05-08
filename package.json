@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/ConsenSys/aragraph#readme",
   "dependencies": {
-    "@aragon/wrapper": "^5.0.0-rc.20",
-    "yaml": "^1.6.0",
-    "yargs": "^14.2.0"
+    "@aragon/wrapper": "^5.0.0-rc.26",
+    "yaml": "^1.9.2",
+    "yargs": "^14.2.3"
   }
 }

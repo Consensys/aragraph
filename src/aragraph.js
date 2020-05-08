@@ -3,12 +3,12 @@
  * @license MIT
  *
  * */
-'use strict'
+'use strict';
 
 /** imports */
 const YAML = require('yaml');
 const fs = require('fs');
-const dao = require('./dao')
+const dao = require('./dao');
 
 function graphNormalizeEntity(e){
     return e.trim().replace(/[-\s\`\[\]]+/g, '_').replace(/(^_)|(_$)/g, "");
@@ -28,7 +28,7 @@ class AraPermissionRelation {
 
     }
     merge(otherArapermissionRelation){
-        this.permissions = this.permissions.concat(otherArapermissionRelation.permissions)
+        this.permissions = this.permissions.concat(otherArapermissionRelation.permissions);
     }
     id(){
         return `${this.grantee}${this.type}${this.app}`;
@@ -36,8 +36,8 @@ class AraPermissionRelation {
     toString(){
         let description = this.permissions.map(perm => { 
             if(perm.manager)
-                return `**${graphNormalizeEntity(this.app)}.${perm.role}** (mgt by ${graphNormalizeEntity(perm.manager)})` 
-        })
+                return `**${graphNormalizeEntity(this.app)}.${perm.role}** (mgt by ${graphNormalizeEntity(perm.manager)})`; 
+        });
         if(!this.grantee){
             //draw relationship from mgt -> app.role?
             return;
@@ -52,8 +52,8 @@ class AraApp {
         this.ref = ref || type;
         this.type = type;
 
-        delete options.ref
-        delete options.type
+        delete options.ref;
+        delete options.type;
 
         this.options = options;
 
@@ -119,7 +119,7 @@ class AraGraph {
             } else {
                 this.permissionTuples[newRel.id()] = newRel;
             }
-        })
+        });
         
     }
 
@@ -128,7 +128,7 @@ class AraGraph {
         this.apps[app.ref] = app; 
         let template = this.config.plantuml.applicationTemplates[app.type ? graphNormalizeEntity(app.type.toLowerCase()) : "__default__"];
         if(template)
-            app.setTemplate(template)
+            app.setTemplate(template);
     }
 
     addToken(t){
@@ -144,23 +144,23 @@ class AraGraph {
 
         uml.push(`' -- tokens --`);
         for(let t of Object.values(this.tokens)){
-            uml.push(t.toString())
+            uml.push(t.toString());
         }
 
         uml.push(`' -- apps --`);
         for(let a of Object.values(this.apps)){
-            uml.push(a.toString())
+            uml.push(a.toString());
             if(a.type==="token-manager" && a.options.token){
-                uml.push(`${graphNormalizeEntity(a.ref)} <|-- ${graphNormalizeEntity(a.options.token)}`)
+                uml.push(`${graphNormalizeEntity(a.ref)} <|-- ${graphNormalizeEntity(a.options.token)}`);
             }
         }
         
         uml.push(`' -- permissions --`);
         for(let p of Object.values(this.permissionTuples)){
-            uml.push(p.toString())
+            uml.push(p.toString());
         }
         
-        uml.push("\n@enduml")
+        uml.push("\n@enduml");
         return uml.join('\n');
     }
 }
@@ -180,7 +180,7 @@ class AragonPermissions {
                     __default__: "class %%ref%% {\n    {abstract}%%type%%\n    ----\n    %%note%%\n}"
                 }
             }
-        }
+        };
         
         this.config = {...config_default, ...config};
     }
@@ -190,19 +190,19 @@ class AragonPermissions {
             this.filename = contents;
             contents = fs.readFileSync(contents, 'utf8');
         }
-        this.data = YAML.parse(contents)
+        this.data = YAML.parse(contents);
         return this;
     }
 
     async fromDAO(daoAddress, chainId) {
-        const remoteDao = new dao.RemoteDao(daoAddress, chainId)
+        const remoteDao = new dao.RemoteDao(daoAddress, chainId);
 
-        await remoteDao.load()
+        await remoteDao.load();
 
-        const permissions = remoteDao.getPermissions()
-        const apps = remoteDao.getApps()
+        const permissions = remoteDao.getPermissions();
+        const apps = remoteDao.getApps();
 
-        this.data = {permissions: permissions, tokens: [], apps: apps, actions: []}
+        this.data = {permissions: permissions, tokens: [], apps: apps, actions: []};
         return this;
     }
 
@@ -216,7 +216,7 @@ class AragonPermissions {
             let result = {};
             let i = 0;
             for(let key of keys){
-                result[key] = values[i++]
+                result[key] = values[i++];
             }
             return result;
         }
@@ -247,7 +247,7 @@ class AragonPermissions {
             lines.push(lineData);
             lineNr++;
             if(header){
-                tableData.push(zipObject(header, lineData.map(v => graphNormalizeEntity(v))))
+                tableData.push(zipObject(header, lineData.map(v => graphNormalizeEntity(v))));
             }
         }
         
@@ -260,16 +260,16 @@ class AragonPermissions {
         let g = new AraGraph(this.config);
 
         for(let a of this.data.apps){
-            g.addApp(a)
+            g.addApp(a);
         }
 
         for(let t of this.data.tokens){
-            g.addToken(t)
+            g.addToken(t);
         }
 
         // -- process permissions
         for(let p of this.data.permissions){
-            g.addPermission(p)
+            g.addPermission(p);
         }
 
         // -- process actions
@@ -285,4 +285,4 @@ class AragonPermissions {
 
 module.exports = {
     AragonPermissions:AragonPermissions
-}
+};

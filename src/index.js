@@ -4,7 +4,8 @@
  * @license MIT
  *
  * */
-'use strict'
+'use strict';
+
 const fs = require('fs');
 const {AragonPermissions} = require("./aragraph.js");
 
@@ -28,7 +29,7 @@ const argv = require('yargs') // eslint-disable-line
         .alias('h', 'help')
     .version()
         .alias('v', 'version')
-    .argv
+    .argv;
 
 let config = null;
 
@@ -42,11 +43,11 @@ argv._.forEach(inp => {
     if(inp.endsWith(".yaml")){
         console.log(new AragonPermissions(config).fromYaml(inp).uml());
     } else if(inp.endsWith(".md")){
-        console.log(new AragonPermissions(config).fromMarkdownTable(inp).uml())
+        console.log(new AragonPermissions(config).fromMarkdownTable(inp).uml());
     } else if(inp.startsWith('0x')){
         new AragonPermissions(config).fromDAO(inp, argv.chainId).then((aragaph) => {
-            console.log(aragaph.uml())
-            process.exit(0)
-        })
+            console.log(aragaph.uml());
+            process.exit(0);
+        });
     }
-})
+});
