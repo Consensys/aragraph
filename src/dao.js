@@ -42,7 +42,6 @@ class RemoteDao {
         console.info = () => {};
         await dao.init();
         console.info = consoleInfo;
-        let d = await dao.apps;
 
         this.apps = await dao.apps
             .pipe(RxOp.takeWhile((apps) => apps.length <= 1, true))
